@@ -1,6 +1,6 @@
 'use strict';
 
-let button_createDeployMessage = document.getElementById('createDeployMessage');
+const button_createDeployMessage = document.getElementById('createDeployMessage');
 
 button_createDeployMessage.onclick = function(element) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {

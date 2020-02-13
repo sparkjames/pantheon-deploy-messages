@@ -1,14 +1,22 @@
-let new_commit_messages = document.querySelectorAll('.c-commit-log__message');
-let deploy_log_message = '';
+'use strict';
 
-for( i=0; i<new_commit_messages.length; i++ ){
+try {
+    const commitMessages = Array.from( document.querySelectorAll('.c-commit-log__message') );
+    const deployLogInput = document.querySelectorAll('.deploy-log-input');
 
-    if( undefined !== new_commit_messages[i].innerText ){
-        deploy_log_message += '- ' + new_commit_messages[i].innerText;
+    if( commitMessages.length && deployLogInput.length && !deployLogInput[0].value ){
+
+        let newMessage = '';
+        newMessage += commitMessages.map( message => '- ' + message.innerText + '\r\n' );
+
+        if( newMessage ){
+            deployLogInput[0].value = newMessage;
+        }
+
     }
 
 }
-
-if( deploy_log_message ){
-    document.querySelectorAll('.deploy-log-input')[0].value = deploy_log_message;
+catch(e){
+    console.log("Pantheon Commit Deploy Message error:");
+    console.log(e);
 }

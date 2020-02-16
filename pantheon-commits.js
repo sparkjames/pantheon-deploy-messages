@@ -7,7 +7,7 @@ try {
     if( commitMessages.length && deployLogInput.length && !deployLogInput[0].value ){
 
         let newMessage = '';
-        newMessage += commitMessages.map( message => '- ' + message.innerText + '\r\n' );
+        newMessage += commitMessages.map( message => '- ' + message.innerText + '\r\n' ).join('');
 
         if( newMessage ){
             deployLogInput[0].value = newMessage;
